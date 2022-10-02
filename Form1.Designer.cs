@@ -35,10 +35,15 @@
             this.lr = new System.Windows.Forms.Label();
             this.lb = new System.Windows.Forms.Label();
             this.lg = new System.Windows.Forms.Label();
+            this.llight = new System.Windows.Forms.Label();
+            this.lsaturation = new System.Windows.Forms.Label();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
+            this.lhue = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbColor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbr)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // pbColor
@@ -104,11 +109,52 @@
             this.lg.TabIndex = 6;
             this.lg.Text = "0";
             // 
+            // llight
+            // 
+            this.llight.AutoSize = true;
+            this.llight.Location = new System.Drawing.Point(542, 21);
+            this.llight.Name = "llight";
+            this.llight.Size = new System.Drawing.Size(22, 25);
+            this.llight.TabIndex = 7;
+            this.llight.Text = "0";
+            // 
+            // lsaturation
+            // 
+            this.lsaturation.AutoSize = true;
+            this.lsaturation.Location = new System.Drawing.Point(677, 21);
+            this.lsaturation.Name = "lsaturation";
+            this.lsaturation.Size = new System.Drawing.Size(22, 25);
+            this.lsaturation.TabIndex = 8;
+            this.lsaturation.Text = "0";
+            // 
+            // trackBar1
+            // 
+            this.trackBar1.Location = new System.Drawing.Point(555, 66);
+            this.trackBar1.Maximum = 100;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Orientation = System.Windows.Forms.Orientation.Vertical;
+            this.trackBar1.Size = new System.Drawing.Size(69, 156);
+            this.trackBar1.TabIndex = 9;
+            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            // 
+            // lhue
+            // 
+            this.lhue.AutoSize = true;
+            this.lhue.Location = new System.Drawing.Point(476, 232);
+            this.lhue.Name = "lhue";
+            this.lhue.Size = new System.Drawing.Size(22, 25);
+            this.lhue.TabIndex = 10;
+            this.lhue.Text = "0";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(798, 285);
+            this.Controls.Add(this.lhue);
+            this.Controls.Add(this.trackBar1);
+            this.Controls.Add(this.lsaturation);
+            this.Controls.Add(this.llight);
             this.Controls.Add(this.lg);
             this.Controls.Add(this.lb);
             this.Controls.Add(this.lr);
@@ -122,6 +168,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tbr)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbb)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -136,5 +183,9 @@
         private Label lr;
         private Label lb;
         private Label lg;
+        private Label llight;
+        private Label lsaturation;
+        private TrackBar trackBar1;
+        private Label lhue;
     }
 }
