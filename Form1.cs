@@ -14,35 +14,50 @@ namespace Lab3_CustomType_
         {
             pbColor.BackColor = Color.FromArgb(tbr.Value, tbg.Value, tbb.Value);
             lr.Text = tbr.Value.ToString();
-            llight.Text = pbColor.BackColor.GetBrightness().ToString();
-            lsaturation.Text = pbColor.BackColor.GetSaturation().ToString();
-            lhue.Text = pbColor.BackColor.GetHue().ToString();
+            UpdateDate();    
         }
 
         private void tbb_Scroll(object sender, EventArgs e)
         {
             pbColor.BackColor = Color.FromArgb(tbr.Value, tbg.Value, tbb.Value);
             lb.Text = tbb.Value.ToString();
-            llight.Text = pbColor.BackColor.GetBrightness().ToString();
-            lsaturation.Text = pbColor.BackColor.GetSaturation().ToString();
-            lhue.Text = pbColor.BackColor.GetHue().ToString();
+            UpdateDate();
         }
 
         private void tbg_Scroll(object sender, EventArgs e)
         {
             pbColor.BackColor = Color.FromArgb(tbr.Value, tbg.Value, tbb.Value);
             lg.Text = tbg.Value.ToString();
-            llight.Text = pbColor.BackColor.GetBrightness().ToString();
-            lsaturation.Text = pbColor.BackColor.GetSaturation().ToString();
-            lhue.Text = pbColor.BackColor.GetHue().ToString();
+            UpdateDate();
         }
 
-        private void trackBar1_Scroll(object sender, EventArgs e)
+        private void tbLightness_Scroll(object sender, EventArgs e)
         {
-            //RGB rgbColor = new RGB { red = pbColor.BackColor.R, green = pbColor.BackColor.G, blue = pbColor.BackColor.B };
-            HVS hvsColor = new HVS { hue = Convert.ToDouble(lhue.Text), saturation = Convert.ToDouble(lsaturation.Text), lightness = (trackBar1.Value * 0.01) };
+            HVS hvsColor = new HVS { hue = currentColor.hue, saturation = currentColor.saturation, lightness = (tbLightness.Value * 0.01) };
 
-            llight.Text = (Math.Round(trackBar1.Value * 0.01, 2)).ToString();
+            lValueLight.Text = tbLightness.Value.ToString();
+            RGB rgbColor = Converting.HVStoRGB(hvsColor);
+            pbColor.BackColor = Color.FromArgb(rgbColor.red, rgbColor.green, rgbColor.blue);
+        }
+
+        private void UpdateDate()
+        {
+            currentColor.lightness = pbColor.BackColor.GetBrightness();
+            currentColor.saturation = pbColor.BackColor.GetSaturation();
+            currentColor.hue = pbColor.BackColor.GetHue();
+            
+            lValueLight.Text = Math.Round(currentColor.lightness * 100).ToString();
+            lValueSaturation.Text = Math.Round(currentColor.saturation * 100).ToString();
+            lValueHue.Text = Math.Round(currentColor.hue).ToString();
+            tbLightness.Value = (int)Math.Round(currentColor.lightness * 100);
+            tbSaturation.Value = (int)Math.Round(currentColor.saturation * 100);
+        }
+
+        private void tbSaturation_Scroll(object sender, EventArgs e)
+        {
+            HVS hvsColor = new HVS { hue = currentColor.hue, saturation = (tbSaturation.Value * 0.01), lightness = currentColor.lightness };
+
+            lValueSaturation.Text = tbSaturation.Value.ToString();
             RGB rgbColor = Converting.HVStoRGB(hvsColor);
             pbColor.BackColor = Color.FromArgb(rgbColor.red, rgbColor.green, rgbColor.blue);
         }
