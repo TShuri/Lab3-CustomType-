@@ -2,10 +2,6 @@
 {
     partial class Form1
     {
-        //public HSV currColorHSV;
-        //public RGB currColorRGB;
-        //public HSV currColorHSV = new HSV { hue = 0, saturation = 0, lightness = 0 };
-        //public RGB currColorRGB = new RGB { red = 0, green = 0, blue = 0 };
         /// <summary>
         ///  Required designer variable.
         /// </summary>

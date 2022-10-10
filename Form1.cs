@@ -10,8 +10,6 @@ namespace Lab3_CustomType_
         public Form1()
         {
             InitializeComponent();
-            //HSV currColorHSV = new HSV { hue = 0, saturation = 0, lightness = 0 };
-            //currColorRGB = new RGB { red = 0, green = 0, blue = 0 };
         }
         
         private void UpdatePbColor() // Отображение цвета по RGB
@@ -33,19 +31,12 @@ namespace Lab3_CustomType_
         }
         private void UpdateDateHSV() // Функция обновления данных по HSV
         {
-            // Обновление HSV значений для текущего цвета
-            //currColorHSV.lightness = pbColor.BackColor.GetBrightness();
-            //currColorHSV.saturation = pbColor.BackColor.GetSaturation();
-            //currColorHSV.hue = pbColor.BackColor.GetHue();
-
             // Отображение значений по HSV
-            //lValueLight.Text = currColorHSV.lightness.ToString();
             lValueLight.Text = Math.Round(currColorHSV.lightness * 100).ToString();
             lValueSaturation.Text = Math.Round(currColorHSV.saturation * 100).ToString();
             lValueHue.Text = Math.Round(currColorHSV.hue).ToString();
 
             // Обновление положения ползунков
-            //tbLightness.Value = (int)Math.Round(currColorHSV.lightness * 200);
             tbLightness.Value = (int)Math.Round(currColorHSV.lightness * 100);
             tbSaturation.Value = (int)Math.Round(currColorHSV.saturation * 100);
             tbHue.Value = (int)Math.Round(currColorHSV.hue);
@@ -54,7 +45,6 @@ namespace Lab3_CustomType_
         private void tbr_Scroll(object sender, EventArgs e) // Ползунок для красного цвета
         {
             currColorRGB.red = (byte)tbRed.Value;
-            //currColorHSV = RGB.RGBtoHSV(currColorRGB);
             currColorRGB.RGBtoHSV(ref currColorHSV);
             UpdatePbColor();
             lValueRed.Text = tbRed.Value.ToString();
@@ -64,7 +54,6 @@ namespace Lab3_CustomType_
         private void tbb_Scroll(object sender, EventArgs e) // Ползунок для синего цвета
         {
             currColorRGB.blue = (byte)tbBlue.Value;
-            //currColorHSV = RGB.RGBtoHSV(currColorRGB);
             currColorRGB.RGBtoHSV(ref currColorHSV);
             UpdatePbColor();
             lValueBlue.Text = tbBlue.Value.ToString();
@@ -74,7 +63,6 @@ namespace Lab3_CustomType_
         private void tbg_Scroll(object sender, EventArgs e) // Ползунок для зеленого цвета
         {
             currColorRGB.green = (byte)tbGreen.Value;
-            //currColorHSV = RGB.RGBtoHSV(currColorRGB);
             currColorRGB.RGBtoHSV(ref currColorHSV);
             UpdatePbColor();
             lValueGreen.Text = tbGreen.Value.ToString();
@@ -84,7 +72,6 @@ namespace Lab3_CustomType_
         private void tbLightness_Scroll(object sender, EventArgs e) // Ползунок для яркости
         {
             currColorHSV.lightness = tbLightness.Value * 0.01;
-            //currColorRGB = HSV.HSVtoRGB(currColorHSV);
             currColorHSV.HSVtoRGB(ref currColorRGB);
             UpdatePbColor();
             lValueLight.Text = tbLightness.Value.ToString();
@@ -94,7 +81,6 @@ namespace Lab3_CustomType_
         private void tbSaturation_Scroll(object sender, EventArgs e) // Ползунок для насыщенности
         {
             currColorHSV.saturation = tbSaturation.Value * 0.01;
-            //currColorRGB = HSV.HSVtoRGB(currColorHSV);
             currColorHSV.HSVtoRGB(ref currColorRGB);
             UpdatePbColor();
             lValueSaturation.Text = tbSaturation.Value.ToString();
@@ -105,7 +91,6 @@ namespace Lab3_CustomType_
         {
             currColorHSV.hue = tbHue.Value;
             currColorHSV.HSVtoRGB(ref currColorRGB);
-            //currColorRGB = HSV.HSVtoRGB(currColorHSV);
             UpdatePbColor();
             lValueHue.Text = tbHue.Value.ToString();
             UpdateDateRGB();
@@ -119,48 +104,60 @@ namespace Lab3_CustomType_
         public byte green;
         public byte blue;
 
-        // Можно добавить функцию преобразования из RGB в HSV
+        public static bool operator ==(RGB exp, RGB test)
+        {
+            return exp.red == test.red &&
+                exp.green == test.green &&
+                exp.blue == test.blue;
+        }        
+        public static bool operator !=(RGB exp, RGB test)
+        {
+            return !(exp == test);
+        }
         public void RGBtoHSV(ref HSV xref)
         {
             HSV result = xref;
-            //HSV result = new HSV { hue = 0, saturation = 0, lightness = 0 };
             double tR = (double)(this.red) / 255;
             double tG = (double)(this.green) / 255;
             double tB = (double)(this.blue) / 255;
-            double[] arr = { tR, tG, tB };
+            double[] arr = new double[] { tR, tG, tB };
             double cMax = arr.Max();
             double cMin = arr.Min();
             double delta = cMax - cMin;
 
-            if (delta == 0) // Определение hue ////////////////
+            if (delta == 0) // Определение hue
             {
-                result.hue = 0;
-            }
-            if (cMax == tR)
-            {
-                result.hue = 60 * ( ( (tG - tB) / delta ) % 6);
-            }
-            if (cMax == tG)
-            {
-                result.hue = 60 * ( ( (tB - tR) / delta ) + 2);
-            }
-            if (cMax == tB)
-            {
-                result.hue = 60 * ( ( (tR - tG) / delta ) + 4);
-            } /////////////////////////////////////////////////
-
-            if (cMax == 0) // Определение saturation
-            {
-                result.saturation = 0;
+                result.hue = (double)0;
             }
             else
             {
-                result.saturation = delta / cMax;
-            } ///////////////////////////////////
+                if (cMax == tR)
+                {
+                    result.hue = (double)((tG - tB) / delta);
+                }
+                else if (cMax == tG)
+                {
+                    result.hue = (double)(60 * (((tB - tR) / delta) + 2));
+                }
+                else if (cMax == tB)
+                {
+                    result.hue = (double)(60 * (((tR - tG) / delta) + 4));
+                }
+                if (result.hue < 0)
+                {
+                    result.hue = result.hue + 360;
+                }
+            }
+            if (cMax == 0) // Определение saturation
+            {
+                result.saturation = (double)0;
+            }
+            else
+            {
+                result.saturation = (double)(delta / cMax);
+            }
 
-            result.lightness = cMax; // Определение lightness
-
-            //return result;
+            result.lightness = (double)cMax; // Определение lightness
         }
     }
     public class HSV
@@ -169,10 +166,19 @@ namespace Lab3_CustomType_
         public double saturation;
         public double lightness;
 
+        public static bool operator ==(HSV exp, HSV test) // Переопределение оператора равно
+        {
+            return exp.hue == Math.Round(test.hue) &&
+                exp.saturation*100 == Math.Round(test.saturation*100) &&
+                exp.lightness*100 == Math.Round(test.lightness*100);
+        }
+        public static bool operator !=(HSV exp, HSV test) // Переопределение оператора неравно
+        {
+            return !(exp == test);
+        }
         public void HSVtoRGB(ref RGB xref) // Преобразование из HSV в RGB
         {
             RGB result = xref;
-            //RGB result = new RGB { red = 0, blue = 0, green = 0 };
             double tR = 0;
             double tG = 0;
             double tB = 0;
@@ -220,8 +226,6 @@ namespace Lab3_CustomType_
             result.red = (byte)((tR + m) * 255);
             result.green = (byte)((tG + m) * 255);
             result.blue = (byte)((tB + m) * 255);
-
-            //return result;
         }
     }
 }
