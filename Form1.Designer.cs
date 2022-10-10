@@ -2,7 +2,10 @@
 {
     partial class Form1
     {
-        HVS currentColor;
+        //public HSV currColorHSV;
+        //public RGB currColorRGB;
+        //public HSV currColorHSV = new HSV { hue = 0, saturation = 0, lightness = 0 };
+        //public RGB currColorRGB = new RGB { red = 0, green = 0, blue = 0 };
         /// <summary>
         ///  Required designer variable.
         /// </summary>
@@ -30,29 +33,31 @@
         private void InitializeComponent()
         {
             this.pbColor = new System.Windows.Forms.PictureBox();
-            this.tbr = new System.Windows.Forms.TrackBar();
-            this.tbb = new System.Windows.Forms.TrackBar();
-            this.tbg = new System.Windows.Forms.TrackBar();
-            this.lr = new System.Windows.Forms.Label();
-            this.lb = new System.Windows.Forms.Label();
-            this.lg = new System.Windows.Forms.Label();
+            this.tbRed = new System.Windows.Forms.TrackBar();
+            this.tbBlue = new System.Windows.Forms.TrackBar();
+            this.tbGreen = new System.Windows.Forms.TrackBar();
+            this.lValueRed = new System.Windows.Forms.Label();
+            this.lValueBlue = new System.Windows.Forms.Label();
+            this.lValueGreen = new System.Windows.Forms.Label();
             this.lValueLight = new System.Windows.Forms.Label();
             this.lValueSaturation = new System.Windows.Forms.Label();
             this.tbLightness = new System.Windows.Forms.TrackBar();
             this.lValueHue = new System.Windows.Forms.Label();
-            this.lred = new System.Windows.Forms.Label();
-            this.lgreen = new System.Windows.Forms.Label();
-            this.lblue = new System.Windows.Forms.Label();
-            this.llightness = new System.Windows.Forms.Label();
-            this.lsaturation = new System.Windows.Forms.Label();
+            this.lRed = new System.Windows.Forms.Label();
+            this.lGreen = new System.Windows.Forms.Label();
+            this.lBlue = new System.Windows.Forms.Label();
+            this.lLightness = new System.Windows.Forms.Label();
+            this.lSaturation = new System.Windows.Forms.Label();
             this.tbSaturation = new System.Windows.Forms.TrackBar();
-            this.lhue = new System.Windows.Forms.Label();
+            this.lHue = new System.Windows.Forms.Label();
+            this.tbHue = new System.Windows.Forms.TrackBar();
             ((System.ComponentModel.ISupportInitialize)(this.pbColor)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbr)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbb)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbg)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbRed)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbBlue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbGreen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbLightness)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbSaturation)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbHue)).BeginInit();
             this.SuspendLayout();
             // 
             // pbColor
@@ -64,59 +69,59 @@
             this.pbColor.TabIndex = 0;
             this.pbColor.TabStop = false;
             // 
-            // tbr
+            // tbRed
             // 
-            this.tbr.Location = new System.Drawing.Point(430, 45);
-            this.tbr.Maximum = 255;
-            this.tbr.Name = "tbr";
-            this.tbr.Size = new System.Drawing.Size(156, 69);
-            this.tbr.TabIndex = 1;
-            this.tbr.Scroll += new System.EventHandler(this.tbr_Scroll);
+            this.tbRed.Location = new System.Drawing.Point(430, 45);
+            this.tbRed.Maximum = 255;
+            this.tbRed.Name = "tbRed";
+            this.tbRed.Size = new System.Drawing.Size(156, 69);
+            this.tbRed.TabIndex = 1;
+            this.tbRed.Scroll += new System.EventHandler(this.tbr_Scroll);
             // 
-            // tbb
+            // tbBlue
             // 
-            this.tbb.Location = new System.Drawing.Point(430, 120);
-            this.tbb.Maximum = 255;
-            this.tbb.Name = "tbb";
-            this.tbb.Size = new System.Drawing.Size(156, 69);
-            this.tbb.TabIndex = 2;
-            this.tbb.Scroll += new System.EventHandler(this.tbb_Scroll);
+            this.tbBlue.Location = new System.Drawing.Point(430, 200);
+            this.tbBlue.Maximum = 255;
+            this.tbBlue.Name = "tbBlue";
+            this.tbBlue.Size = new System.Drawing.Size(156, 69);
+            this.tbBlue.TabIndex = 2;
+            this.tbBlue.Scroll += new System.EventHandler(this.tbb_Scroll);
             // 
-            // tbg
+            // tbGreen
             // 
-            this.tbg.Location = new System.Drawing.Point(430, 200);
-            this.tbg.Maximum = 255;
-            this.tbg.Name = "tbg";
-            this.tbg.Size = new System.Drawing.Size(156, 69);
-            this.tbg.TabIndex = 3;
-            this.tbg.Scroll += new System.EventHandler(this.tbg_Scroll);
+            this.tbGreen.Location = new System.Drawing.Point(430, 119);
+            this.tbGreen.Maximum = 255;
+            this.tbGreen.Name = "tbGreen";
+            this.tbGreen.Size = new System.Drawing.Size(156, 69);
+            this.tbGreen.TabIndex = 3;
+            this.tbGreen.Scroll += new System.EventHandler(this.tbg_Scroll);
             // 
-            // lr
+            // lValueRed
             // 
-            this.lr.AutoSize = true;
-            this.lr.Location = new System.Drawing.Point(592, 51);
-            this.lr.Name = "lr";
-            this.lr.Size = new System.Drawing.Size(22, 25);
-            this.lr.TabIndex = 4;
-            this.lr.Text = "0";
+            this.lValueRed.AutoSize = true;
+            this.lValueRed.Location = new System.Drawing.Point(592, 52);
+            this.lValueRed.Name = "lValueRed";
+            this.lValueRed.Size = new System.Drawing.Size(22, 25);
+            this.lValueRed.TabIndex = 4;
+            this.lValueRed.Text = "0";
             // 
-            // lb
+            // lValueBlue
             // 
-            this.lb.AutoSize = true;
-            this.lb.Location = new System.Drawing.Point(592, 126);
-            this.lb.Name = "lb";
-            this.lb.Size = new System.Drawing.Size(22, 25);
-            this.lb.TabIndex = 5;
-            this.lb.Text = "0";
+            this.lValueBlue.AutoSize = true;
+            this.lValueBlue.Location = new System.Drawing.Point(592, 207);
+            this.lValueBlue.Name = "lValueBlue";
+            this.lValueBlue.Size = new System.Drawing.Size(22, 25);
+            this.lValueBlue.TabIndex = 5;
+            this.lValueBlue.Text = "0";
             // 
-            // lg
+            // lValueGreen
             // 
-            this.lg.AutoSize = true;
-            this.lg.Location = new System.Drawing.Point(592, 206);
-            this.lg.Name = "lg";
-            this.lg.Size = new System.Drawing.Size(22, 25);
-            this.lg.TabIndex = 6;
-            this.lg.Text = "0";
+            this.lValueGreen.AutoSize = true;
+            this.lValueGreen.Location = new System.Drawing.Point(592, 126);
+            this.lValueGreen.Name = "lValueGreen";
+            this.lValueGreen.Size = new System.Drawing.Size(22, 25);
+            this.lValueGreen.TabIndex = 6;
+            this.lValueGreen.Text = "0";
             // 
             // lValueLight
             // 
@@ -149,64 +154,64 @@
             // lValueHue
             // 
             this.lValueHue.AutoSize = true;
-            this.lValueHue.Location = new System.Drawing.Point(521, 272);
+            this.lValueHue.Location = new System.Drawing.Point(740, 301);
             this.lValueHue.Name = "lValueHue";
             this.lValueHue.Size = new System.Drawing.Size(22, 25);
             this.lValueHue.TabIndex = 10;
             this.lValueHue.Text = "0";
             // 
-            // lred
+            // lRed
             // 
-            this.lred.AutoSize = true;
-            this.lred.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lred.ForeColor = System.Drawing.Color.Red;
-            this.lred.Location = new System.Drawing.Point(353, 45);
-            this.lred.Name = "lred";
-            this.lred.Size = new System.Drawing.Size(55, 32);
-            this.lred.TabIndex = 11;
-            this.lred.Text = "Red";
+            this.lRed.AutoSize = true;
+            this.lRed.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lRed.ForeColor = System.Drawing.Color.Red;
+            this.lRed.Location = new System.Drawing.Point(353, 45);
+            this.lRed.Name = "lRed";
+            this.lRed.Size = new System.Drawing.Size(55, 32);
+            this.lRed.TabIndex = 11;
+            this.lRed.Text = "Red";
             // 
-            // lgreen
+            // lGreen
             // 
-            this.lgreen.AutoSize = true;
-            this.lgreen.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lgreen.ForeColor = System.Drawing.Color.Lime;
-            this.lgreen.Location = new System.Drawing.Point(353, 119);
-            this.lgreen.Name = "lgreen";
-            this.lgreen.Size = new System.Drawing.Size(78, 32);
-            this.lgreen.TabIndex = 12;
-            this.lgreen.Text = "Green";
+            this.lGreen.AutoSize = true;
+            this.lGreen.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lGreen.ForeColor = System.Drawing.Color.Lime;
+            this.lGreen.Location = new System.Drawing.Point(353, 119);
+            this.lGreen.Name = "lGreen";
+            this.lGreen.Size = new System.Drawing.Size(78, 32);
+            this.lGreen.TabIndex = 12;
+            this.lGreen.Text = "Green";
             // 
-            // lblue
+            // lBlue
             // 
-            this.lblue.AutoSize = true;
-            this.lblue.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblue.ForeColor = System.Drawing.Color.Blue;
-            this.lblue.Location = new System.Drawing.Point(353, 200);
-            this.lblue.Name = "lblue";
-            this.lblue.Size = new System.Drawing.Size(61, 32);
-            this.lblue.TabIndex = 13;
-            this.lblue.Text = "Blue";
+            this.lBlue.AutoSize = true;
+            this.lBlue.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lBlue.ForeColor = System.Drawing.Color.Blue;
+            this.lBlue.Location = new System.Drawing.Point(353, 200);
+            this.lBlue.Name = "lBlue";
+            this.lBlue.Size = new System.Drawing.Size(61, 32);
+            this.lBlue.TabIndex = 13;
+            this.lBlue.Text = "Blue";
             // 
-            // llightness
+            // lLightness
             // 
-            this.llightness.AutoSize = true;
-            this.llightness.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.llightness.Location = new System.Drawing.Point(628, 41);
-            this.llightness.Name = "llightness";
-            this.llightness.Size = new System.Drawing.Size(114, 32);
-            this.llightness.TabIndex = 14;
-            this.llightness.Text = "Lightness";
+            this.lLightness.AutoSize = true;
+            this.lLightness.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lLightness.Location = new System.Drawing.Point(628, 41);
+            this.lLightness.Name = "lLightness";
+            this.lLightness.Size = new System.Drawing.Size(114, 32);
+            this.lLightness.TabIndex = 14;
+            this.lLightness.Text = "Lightness";
             // 
-            // lsaturation
+            // lSaturation
             // 
-            this.lsaturation.AutoSize = true;
-            this.lsaturation.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lsaturation.Location = new System.Drawing.Point(757, 41);
-            this.lsaturation.Name = "lsaturation";
-            this.lsaturation.Size = new System.Drawing.Size(123, 32);
-            this.lsaturation.TabIndex = 15;
-            this.lsaturation.Text = "Saturation";
+            this.lSaturation.AutoSize = true;
+            this.lSaturation.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lSaturation.Location = new System.Drawing.Point(757, 41);
+            this.lSaturation.Name = "lSaturation";
+            this.lSaturation.Size = new System.Drawing.Size(123, 32);
+            this.lSaturation.TabIndex = 15;
+            this.lSaturation.Text = "Saturation";
             // 
             // tbSaturation
             // 
@@ -218,46 +223,58 @@
             this.tbSaturation.TabIndex = 16;
             this.tbSaturation.Scroll += new System.EventHandler(this.tbSaturation_Scroll);
             // 
-            // lhue
+            // lHue
             // 
-            this.lhue.AutoSize = true;
-            this.lhue.Location = new System.Drawing.Point(471, 272);
-            this.lhue.Name = "lhue";
-            this.lhue.Size = new System.Drawing.Size(44, 25);
-            this.lhue.TabIndex = 17;
-            this.lhue.Text = "Hue";
+            this.lHue.AutoSize = true;
+            this.lHue.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lHue.Location = new System.Drawing.Point(457, 295);
+            this.lHue.Name = "lHue";
+            this.lHue.Size = new System.Drawing.Size(58, 32);
+            this.lHue.TabIndex = 17;
+            this.lHue.Text = "Hue";
+            // 
+            // tbHue
+            // 
+            this.tbHue.Location = new System.Drawing.Point(521, 295);
+            this.tbHue.Maximum = 360;
+            this.tbHue.Name = "tbHue";
+            this.tbHue.Size = new System.Drawing.Size(213, 69);
+            this.tbHue.TabIndex = 18;
+            this.tbHue.Scroll += new System.EventHandler(this.tbHue_Scroll);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(892, 376);
-            this.Controls.Add(this.lhue);
+            this.Controls.Add(this.tbHue);
+            this.Controls.Add(this.lHue);
             this.Controls.Add(this.tbSaturation);
-            this.Controls.Add(this.lsaturation);
-            this.Controls.Add(this.llightness);
-            this.Controls.Add(this.lblue);
-            this.Controls.Add(this.lgreen);
-            this.Controls.Add(this.lred);
+            this.Controls.Add(this.lSaturation);
+            this.Controls.Add(this.lLightness);
+            this.Controls.Add(this.lBlue);
+            this.Controls.Add(this.lGreen);
+            this.Controls.Add(this.lRed);
             this.Controls.Add(this.lValueHue);
             this.Controls.Add(this.tbLightness);
             this.Controls.Add(this.lValueSaturation);
             this.Controls.Add(this.lValueLight);
-            this.Controls.Add(this.lg);
-            this.Controls.Add(this.lb);
-            this.Controls.Add(this.lr);
-            this.Controls.Add(this.tbg);
-            this.Controls.Add(this.tbb);
-            this.Controls.Add(this.tbr);
+            this.Controls.Add(this.lValueGreen);
+            this.Controls.Add(this.lValueBlue);
+            this.Controls.Add(this.lValueRed);
+            this.Controls.Add(this.tbGreen);
+            this.Controls.Add(this.tbBlue);
+            this.Controls.Add(this.tbRed);
             this.Controls.Add(this.pbColor);
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.pbColor)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbr)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbb)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbg)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbRed)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbBlue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbGreen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbLightness)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbSaturation)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbHue)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -266,22 +283,23 @@
         #endregion
 
         private PictureBox pbColor;
-        private TrackBar tbr;
-        private TrackBar tbb;
-        private TrackBar tbg;
-        private Label lr;
-        private Label lb;
-        private Label lg;
+        private TrackBar tbRed;
+        private TrackBar tbBlue;
+        private TrackBar tbGreen;
+        private Label lValueRed;
+        private Label lValueBlue;
+        private Label lValueGreen;
         private Label lValueLight;
         private Label lValueSaturation;
         private TrackBar tbLightness;
         private Label lValueHue;
-        private Label lred;
-        private Label lgreen;
-        private Label lblue;
-        private Label llightness;
-        private Label lsaturation;
+        private Label lRed;
+        private Label lGreen;
+        private Label lBlue;
+        private Label lLightness;
+        private Label lSaturation;
         private TrackBar tbSaturation;
-        private Label lhue;
+        private Label lHue;
+        private TrackBar tbHue;
     }
 }
